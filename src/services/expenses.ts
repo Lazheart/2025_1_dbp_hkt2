@@ -38,10 +38,7 @@ export const deleteExpense = async (id: string): Promise<any> => {
   }
 };
   
-
-
-
-export const getExpenseCategories  = async (): Promise<ExpenseCategory[]> => {
+export const getExpenseCategories = async (): Promise<ExpenseCategory[]> => {
   try {
     const response = await api.get<ExpenseCategory[]>('/expenses_category');
     return response.data;
