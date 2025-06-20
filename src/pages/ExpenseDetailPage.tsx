@@ -19,11 +19,17 @@ const ExpenseDetailPage: React.FC = () => {
   const queryParams = new URLSearchParams(location.search);
   const year = parseInt(queryParams.get('year') || new Date().getFullYear().toString());
   const month = parseInt(queryParams.get('month') || (new Date().getMonth() + 1).toString());
-  const categoryId = parseInt(queryParams.get('category') || '0');
+  const categoryId = parseInt(queryParams.get('categoryId') || '0');
   const categoryName = queryParams.get('categoryName') || 'Selected Category';
 
   useEffect(() => {
-    if (!isNaN(categoryId) && !isNaN(year) && !isNaN(month))  {
+    // Depuración: Imprime los valores para verificar qué están obteniendo
+    console.log("year:", year, "isNaN(year):", isNaN(year));
+    console.log("month:", month, "isNaN(month):", isNaN(month));
+    console.log("categoryId:", categoryId, "isNaN(categoryId):", isNaN(categoryId));
+
+    // La condición clave:
+    if (!isNaN(categoryId) && !isNaN(year) && !isNaN(month) && categoryId !== 0) {
       const fetchDetails = async () => {
         try {
           setIsLoading(true);
@@ -37,7 +43,8 @@ const ExpenseDetailPage: React.FC = () => {
       };
       fetchDetails();
     } else {
-      setError('Invalid category or date parameters.');
+      // Esta es la parte que se está ejecutando
+      setError('Invalid category or date parameters. Please ensure they are numeric and category is not zero.');
       setIsLoading(false);
     }
   }, [year, month, categoryId]);
