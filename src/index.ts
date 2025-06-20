@@ -25,7 +25,7 @@ export interface User {
   }
   
   export interface ExpenseDetail {
-    id: string;
+    id: number;
     date: string;
     category: {
       id: number;

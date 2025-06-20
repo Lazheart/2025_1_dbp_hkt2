@@ -4,7 +4,7 @@ import type { ExpenseDetail } from '../../index';
 
 interface ExpenseItemProps {
   expense: ExpenseDetail;
-  onDelete: (id: string) => void;
+  onDelete: (id: number) => void;
   isDeleting?: boolean; // Para mostrar estado de carga durante eliminación
 }
 
@@ -91,7 +91,7 @@ const ExpenseItem: React.FC<ExpenseItemProps> = ({
           fontSize: '12px',
           fontFamily: 'monospace'
         }}>
-          #{expense.id.slice(-6)}
+          #{expense.id}
         </small>
         
         <button

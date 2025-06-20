@@ -23,7 +23,7 @@ const ExpenseDetailPage: React.FC = () => {
   const categoryName = queryParams.get('categoryName') || 'Selected Category';
 
   useEffect(() => {
-    if (categoryId && year && month) {
+    if (!isNaN(categoryId) && !isNaN(year) && !isNaN(month))  {
       const fetchDetails = async () => {
         try {
           setIsLoading(true);
@@ -42,7 +42,7 @@ const ExpenseDetailPage: React.FC = () => {
     }
   }, [year, month, categoryId]);
 
-  const handleDelete = async (id: string) => {
+  const handleDelete = async (id: number) => {
     if (window.confirm('Are you sure you want to delete this expense?')) {
       try {
         await deleteExpense(id);

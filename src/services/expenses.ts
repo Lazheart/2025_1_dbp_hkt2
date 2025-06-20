@@ -29,7 +29,7 @@ export const addExpense = async (expense: NewExpense): Promise<any> => {
   }
 };
 
-export const deleteExpense = async (id: string): Promise<any> => {
+export const deleteExpense = async (id: number): Promise<any> => {
   try {
     const response = await api.delete(`/expenses/${id}`);
     return response.data;
