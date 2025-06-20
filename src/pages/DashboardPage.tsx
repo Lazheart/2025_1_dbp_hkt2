@@ -57,6 +57,11 @@ const DashboardPage: React.FC = () => {
 
   return (
     <div className="p-4">
+      <div className="text-center">
+        <Button onClick={() => navigate('/expenses/new')}>
+          Register New Expense
+        </Button>
+      </div>
       <h1 className="text-4xl font-bold text-center text-gray-800 mb-8">Monthly Expense Summary ({currentMonth}/{currentYear})</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
         {summaryWithNames.length > 0 ? (
@@ -71,11 +76,6 @@ const DashboardPage: React.FC = () => {
         ) : (
           <p className="text-gray-600 text-center col-span-full">No expenses recorded for this month yet.</p>
         )}
-      </div>
-      <div className="text-center">
-        <Button onClick={() => navigate('/expenses/new')}>
-          Register New Expense
-        </Button>
       </div>
     </div>
   );
