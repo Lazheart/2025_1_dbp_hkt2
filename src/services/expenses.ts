@@ -1,6 +1,6 @@
 // src/services/expenses.ts
 import api from './api';
-import type { ExpenseSummary, ExpenseDetail, ExpenseCategory, NewExpense } from '../types';
+import type { ExpenseSummary, ExpenseDetail, ExpenseCategory, NewExpense } from '../index';
 
 export const getExpensesSummary = async (): Promise<ExpenseSummary[]> => {
   try {
@@ -29,7 +29,7 @@ export const addExpense = async (expense: NewExpense): Promise<any> => {
   }
 };
 
-export const deleteExpense = async (id: string): Promise<any> => {
+export const deleteExpense = async (id: number): Promise<any> => {
   try {
     const response = await api.delete(`/expenses/${id}`);
     return response.data;
@@ -37,7 +37,7 @@ export const deleteExpense = async (id: string): Promise<any> => {
     throw new Error(error.response?.data?.message || 'Error deleting expense');
   }
 };
-  
+
 export const getExpenseCategories = async (): Promise<ExpenseCategory[]> => {
   try {
     const response = await api.get<ExpenseCategory[]>('/expenses_category');

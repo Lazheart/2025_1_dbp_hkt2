@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getExpenseDetail, deleteExpense } from '../services/expenses';
-import type { ExpenseDetail } from '../types';
+import type { ExpenseDetail } from '../index';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 import ExpenseItem from '../components/expenses/ExpenseItem';
 import Button from '../components/common/Button';
@@ -23,7 +23,13 @@ const ExpenseDetailPage: React.FC = () => {
   const categoryName = queryParams.get('categoryName') || 'Selected Category';
 
   useEffect(() => {
-    if (categoryId && year && month) {
+    // Depuración: Imprime los valores para verificar qué están obteniendo
+    console.log("year:", year, "isNaN(year):", isNaN(year));
+    console.log("month:", month, "isNaN(month):", isNaN(month));
+    console.log("categoryId:", categoryId, "isNaN(categoryId):", isNaN(categoryId));
+
+    // La condición clave:
+    if (!isNaN(categoryId) && !isNaN(year) && !isNaN(month) && categoryId !== 0) {
       const fetchDetails = async () => {
         try {
           setIsLoading(true);
@@ -37,12 +43,13 @@ const ExpenseDetailPage: React.FC = () => {
       };
       fetchDetails();
     } else {
-      setError('Invalid category or date parameters.');
+      // Esta es la parte que se está ejecutando
+      setError('Invalid category or date parameters. Please ensure they are numeric and category is not zero.');
       setIsLoading(false);
     }
   }, [year, month, categoryId]);
 
-  const handleDelete = async (id: string) => {
+  const handleDelete = async (id: number) => {
     if (window.confirm('Are you sure you want to delete this expense?')) {
       try {
         await deleteExpense(id);

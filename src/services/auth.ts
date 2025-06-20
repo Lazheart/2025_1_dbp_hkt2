@@ -1,7 +1,7 @@
 // src/services/auth.ts
 import api from './api';
-import type { AuthResponse } from '../types';
-import type { User } from '../types';
+import type { AuthResponse } from '../index';
+import type { User } from '../index';
 
 export const registerUser = async (email: string, passwd: string): Promise<User> => {
   try {
@@ -9,7 +9,7 @@ export const registerUser = async (email: string, passwd: string): Promise<User>
     if (response.data.status === 200) { // La API de Ahorrista devuelve 200 para registro exitoso
       localStorage.setItem('jwt_token', response.data.result.token); // Guarda el token JWT
       localStorage.setItem('user_email', response.data.result.username); // Guarda el email también
-      return { username: response.data.result.username, token: response.data.result.token };
+      return { email: response.data.result.username, token: response.data.result.token };
     }
     throw new Error(response.data.message || 'Registration failed');
   } catch (error: any) {
@@ -23,7 +23,7 @@ export const loginUser = async (email: string, passwd: string): Promise<User> =>
     if (response.data.status === 200) { // La API de Ahorrista devuelve 200 para login exitoso
       localStorage.setItem('jwt_token', response.data.result.token); // Guarda el token JWT
       localStorage.setItem('user_email', response.data.result.username); // Guarda el email también
-      return { username: response.data.result.username, token: response.data.result.token };
+      return { email: response.data.result.username, token: response.data.result.token };
     }
     throw new Error(response.data.message || 'Login failed');
   } catch (error: any) {
