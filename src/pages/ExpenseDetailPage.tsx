@@ -19,7 +19,7 @@ const ExpenseDetailPage: React.FC = () => {
   const queryParams = new URLSearchParams(location.search);
   const year = parseInt(queryParams.get('year') || new Date().getFullYear().toString());
   const month = parseInt(queryParams.get('month') || (new Date().getMonth() + 1).toString());
-  const categoryId = parseInt(queryParams.get('categoryId') || '0');
+  const categoryId = parseInt(queryParams.get('category') || '0');
   const categoryName = queryParams.get('categoryName') || 'Selected Category';
 
   useEffect(() => {

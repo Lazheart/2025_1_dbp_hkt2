@@ -14,17 +14,24 @@ export interface User {
   }
   
   export interface ExpenseSummary {
-    categoryId: number;
-    categoryName: string; // Esto se añadirá en el frontend al combinar con categories
-    totalAmount: number;
+    id: number
+    expenseCategory: {
+      id: number;
+      name: string,
+    };
+    year: number;
+    month: number;
+    amount: number;
   }
   
   export interface ExpenseDetail {
     id: string;
-    categoryId: number;
+    date: string;
+    category: {
+      id: number;
+      name: string;
+    };
     amount: number;
-    description: string;
-    date: string; // Formato ISO: YYYY-MM-DD
   }
   
   export interface ExpenseCategory {
