@@ -1,6 +1,6 @@
 // src/components/expenses/ExpenseItem.tsx
 import React from 'react';
-import type { ExpenseDetail } from '../../types';
+import type { ExpenseDetail } from '../../index';
 
 interface ExpenseItemProps {
   expense: ExpenseDetail;

@@ -37,7 +37,7 @@ export const deleteExpense = async (id: string): Promise<any> => {
     throw new Error(error.response?.data?.message || 'Error deleting expense');
   }
 };
-  
+
 export const getExpenseCategories = async (): Promise<ExpenseCategory[]> => {
   try {
     const response = await api.get<ExpenseCategory[]>('/expenses_category');

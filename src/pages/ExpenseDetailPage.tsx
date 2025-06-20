@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getExpenseDetail, deleteExpense } from '../services/expenses';
-import type { ExpenseDetail } from '../types';
+import type { ExpenseDetail } from '../index';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 import ExpenseItem from '../components/expenses/ExpenseItem';
 import Button from '../components/common/Button';
