@@ -8,7 +8,6 @@ import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
 import ExpenseDetailPage from './pages/ExpenseDetailPage';
 import ExpenseFormPage from './pages/ExpenseFormPage'; // Nueva página para añadir gasto
-import GoalsPage from './pages/GoalsPage';
 import Header from './components/layout/Header'; // Incluir el Header para todas las páginas
 
 function App() {
@@ -27,7 +26,7 @@ function App() {
             <Route path="dashboard" element={<DashboardPage />} />
             <Route path="expenses/detail" element={<ExpenseDetailPage />} />
             <Route path="expenses/new" element={<ExpenseFormPage />} /> {/* Ruta para añadir un nuevo gasto */}
-            <Route path="goals" element={<GoalsPage />} />
+            
           </Route>
           {/* Puedes añadir una ruta para un 404 Not Found */}
           <Route path="*" element={<div><h1>404 - Not Found</h1><p>The page you are looking for does not exist.</p><Link to="/login">Go to Login</Link></div>} />

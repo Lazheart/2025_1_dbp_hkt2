@@ -10,7 +10,6 @@ import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
 import ExpenseDetailPage from './pages/ExpenseDetailPage';
 import ExpenseFormPage from './pages/ExpenseFormPage';
-import GoalsPage from './pages/GoalsPage';
 
 // El componente principal que se renderizará dentro del RootLayout
 export default function HomePage() {
@@ -27,7 +26,7 @@ export default function HomePage() {
         <Route path="dashboard" element={<DashboardPage />} />
         <Route path="expenses/new" element={<ExpenseFormPage />} />
         <Route path="expenses/detail" element={<ExpenseDetailPage />} />
-        <Route path="goals" element={<GoalsPage />} />
+
       </Route>
 
       {/* Ruta para 404 No Encontrado */}

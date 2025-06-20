@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ExpenseForm from '../components/expenses/ExpenseForm';
 import { addExpense } from '../services/expenses';
-import type { NewExpense } from '../types';
+import type { NewExpense } from '../index';
 
 const ExpenseFormPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);

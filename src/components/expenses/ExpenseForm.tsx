@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Input from '../common/Input';
 import Button from '../common/Button';
-import type { NewExpense } from '../../types';
+import type { NewExpense } from '../../index';
 // ExpenseCategory type defined locally because '../types' does not exist
 export type ExpenseCategory = {
   id: number;
@@ -50,23 +50,21 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!description || !amount || !categoryId || !date) {
-      // El error de formulario se maneja en el padre, pero esta es una validación básica
-      return;
-    }
-    if (typeof amount !== 'number' || amount <= 0) {
-        // Validación local para el monto
-        return;
-    }
+  e.preventDefault();
+  if (amount === '' || categoryId === '') {
+    setCategoriesError('Please fill all fields.'); // O un error más específico
+    return;
+  }
 
-    onSubmit({
-      description,
-      amount: amount as number,
-      categoryId: categoryId as number,
-      date,
-    });
+  // Asegúrate de que amount y categoryId sean números
+  const newExpense: NewExpense = {
+    description,
+    amount: typeof amount === 'string' ? parseFloat(amount) : amount,
+    categoryId: typeof categoryId === 'string' ? parseInt(categoryId) : categoryId,
+    date, // Asegúrate de que 'date' tenga el formato YYYY-MM-DD
   };
+  onSubmit(newExpense);
+};
 
   if (loadingCategories) {
     return <LoadingSpinner />; // Muestra spinner mientras carga categorías

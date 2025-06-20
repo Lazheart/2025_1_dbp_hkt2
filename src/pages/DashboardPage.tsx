@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { getExpensesSummary, getExpenseCategories } from '../services/expenses';
-import type { ExpenseSummary, ExpenseCategory } from '../types';
+import type { ExpenseSummary, ExpenseCategory } from '../index';
 import ExpenseSummaryCard from '../components/expenses/ExpenseSummaryCard';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 import Button from '../components/common/Button';

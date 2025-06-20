@@ -1,6 +1,6 @@
 // src/services/expenses.ts
 import api from './api';
-import type { ExpenseSummary, ExpenseDetail, ExpenseCategory, NewExpense } from '../types';
+import type { ExpenseSummary, ExpenseDetail, ExpenseCategory, NewExpense } from '../index'; // O './../index' dependiendo de la ruta
 
 export const getExpensesSummary = async (): Promise<ExpenseSummary[]> => {
   try {
