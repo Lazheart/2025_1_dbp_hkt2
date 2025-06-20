@@ -7,9 +7,9 @@ export interface User {
   export interface AuthResponse {
     status: number;
     message: string;
-    data: {
+    result: {
       token: string;
-      email: string;
+      username: string;
     };
   }
   
@@ -52,10 +52,6 @@ export interface User {
     year: number;
     targetAmount: number;
   }
-=======
-  email: string;
-  token: string;
-}
 
 export interface AuthResponse {
   status: number;
